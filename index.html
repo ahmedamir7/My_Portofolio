@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmed Amir - Flutter Developer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%) !important;
+            background-color: #0f766e !important;
+        }
+        
+        .hero-pattern {
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255,255,255,0.1) 0%, transparent 50%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+        
+        .skill-tag {
+            background: linear-gradient(135deg, #14b8a6 0%, #0f766e 100%);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            display: inline-block;
+            margin: 0.3rem;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(20, 184, 166, 0.4);
+        }
+        
+        .service-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            background: linear-gradient(135deg, #14b8a6 0%, #0f766e 100%);
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        .typing-animation {
+            border-right: 3px solid #14b8a6;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { border-color: transparent; }
+            51%, 100% { border-color: #14b8a6; }
+        }
+        
+        .section-fade {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+        
+        .section-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -8px;
+            left: 50%;
+            background: #14b8a6;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
+        
+        .testimonial-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-left: 4px solid #14b8a6;
+        }
+        
+        .achievement-badge {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: white;
+            border-radius: 50px;
+            padding: 0.5rem 1rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #14b8a6 0%, #0f766e 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(20, 184, 166, 0.4);
+        }
+
+        /* Dark Mode Styles */
+        .dark-mode {
+            background-color: #0f172a;
+            color: #f1f5f9;
+        }
+
+        .dark-mode nav {
+            background-color: rgba(15, 23, 42, 0.95);
+        }
+
+        .dark-mode .text-gray-800 {
+            color: #f1f5f9 !important;
+        }
+
+        .dark-mode .text-gray-600 {
+            color: #cbd5e1 !important;
+        }
+
+        .dark-mode .text-gray-700 {
+            color: #e2e8f0 !important;
+        }
+
+        .dark-mode .bg-white {
+            background-color: #1e293b !important;
+            color: #f1f5f9 !important;
+        }
+
+        .dark-mode .bg-gray-50 {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%) !important;
+        }
+
+        .dark-mode .bg-gradient-to-br {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
+        }
+
+        .dark-mode .service-card {
+            background: linear-gradient(135deg, #334155 0%, #475569 100%) !important;
+            border-color: #475569 !important;
+            color: #f1f5f9 !important;
+        }
+
+        .dark-mode .service-card:hover {
+            background: linear-gradient(135deg, #14b8a6 0%, #0f766e 100%) !important;
+            color: white !important;
+        }
+
+        .dark-mode .bg-gray-900 {
+            background-color: #020617 !important;
+        }
+
+        .dark-mode #dark-mode-toggle {
+            background-color: #334155 !important;
+        }
+
+        .dark-mode #dark-mode-toggle:hover {
+            background-color: #475569 !important;
+        }
+
+        .dark-mode #dark-mode-toggle i {
+            color: #f1f5f9 !important;
+        }
+
+        /* Experience section dark mode improvements */
+        .dark-mode .bg-gradient-to-r.from-teal-50 {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%) !important;
+            border-color: #14b8a6 !important;
+        }
+
+        .dark-mode .bg-gradient-to-r.from-blue-50 {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%) !important;
+            border-color: #3b82f6 !important;
+        }
+
+        .dark-mode .bg-gradient-to-r.from-green-50 {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%) !important;
+            border-color: #10b981 !important;
+        }
+
+        .dark-mode .bg-gradient-to-r.from-yellow-50 {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%) !important;
+            border-color: #f59e0b !important;
+        }
+
+        .dark-mode .bg-gradient-to-r.from-purple-50 {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%) !important;
+            border-color: #8b5cf6 !important;
+        }
+
+        /* Ensure all text in experience cards is readable */
+        .dark-mode .bg-gradient-to-r h4,
+        .dark-mode .bg-gradient-to-r h5,
+        .dark-mode .bg-gradient-to-r p,
+        .dark-mode .bg-gradient-to-r li {
+            color: #f1f5f9 !important;
+        }
+
+        .dark-mode .text-teal-600 {
+            color: #5eead4 !important;
+        }
+
+        .dark-mode .text-blue-600 {
+            color: #93c5fd !important;
+        }
+
+        .dark-mode .text-green-600 {
+            color: #86efac !important;
+        }
+
+        .dark-mode .text-yellow-600 {
+            color: #fde047 !important;
+        }
+
+        .dark-mode .text-purple-600 {
+            color: #c4b5fd !important;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold text-gray-800">
+                    Ahmed <span class="text-teal-600">Amir</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-600 hover:text-gray-800 font-medium">Home</a>
+                    <a href="#about" class="nav-link text-gray-600 hover:text-gray-800 font-medium">About</a>
+                    <a href="#services" class="nav-link text-gray-600 hover:text-gray-800 font-medium">Services</a>
+                    <a href="#projects" class="nav-link text-gray-600 hover:text-gray-800 font-medium">Projects</a>
+                    <a href="#experience" class="nav-link text-gray-600 hover:text-gray-800 font-medium">Experience</a>
+                    <a href="#contact" class="nav-link text-gray-600 hover:text-gray-800 font-medium">Contact</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="dark-mode-toggle" class="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
+                        <i class="fas fa-moon text-gray-600"></i>
+                    </button>
+                    <a href="#contact" class="hidden md:block cta-button">
+                        Hire Me
+                    </a>
+                    <button id="mobile-menu-btn" class="md:hidden text-gray-600">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-gray-200 pt-4">
+                <a href="#home" class="block py-2 text-gray-600 font-medium">Home</a>
+                <a href="#about" class="block py-2 text-gray-600 font-medium">About</a>
+                <a href="#services" class="block py-2 text-gray-600 font-medium">Services</a>
+                <a href="#projects" class="block py-2 text-gray-600 font-medium">Projects</a>
+                <a href="#experience" class="block py-2 text-gray-600 font-medium">Experience</a>
+                <a href="#contact" class="block py-2 text-gray-600 font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero/Cover Section -->
+    <section id="home" class="gradient-bg hero-pattern min-h-screen flex items-center justify-center text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 text-center relative z-10">
+            <div class="mb-8">
+                <!-- Profile Photo Container -->
+                <div>
+
+                    
+                    <!-- Professional overlay effect -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-teal-600/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                <h1 class="text-6xl md:text-8xl font-bold mb-6 leading-tight text-white">
+                    Ahmed <span class="text-cyan-300">Amir</span>
+                </h1>
+                <div class="text-2xl md:text-3xl mb-8 font-medium">
+                    <span class="typing-animation">Flutter Developer & Mobile App Specialist</span>
+                </div>
+                <p class="text-xl md:text-2xl mb-4 max-w-4xl mx-auto opacity-95 font-medium">
+                    Creating High-Performance Cross-Platform Mobile Applications
+                </p>
+                <p class="text-lg md:text-xl mb-12 max-w-3xl mx-auto opacity-80">
+                    Specialized Flutter developer with competitive programming precision, delivering scalable mobile solutions for businesses worldwide
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center mb-12">
+                    <a href="#projects" class="bg-white text-teal-600 px-10 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all transform hover:scale-105">
+                        View My Work
+                    </a>
+                    <a href="#contact" class="border-3 border-white text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-teal-600 transition-all transform hover:scale-105">
+                        Let's Talk
+                    </a>
+                </div>
+            </div>
+            <div class="flex justify-center">
+                <a href="https://drive.google.com/file/d/1qvFkar2vl_GvNPkJaCNELyX1UVIUmrds/view?usp=drive_link" class="bg-white/20 backdrop-blur-sm border-2 border-white/30 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-teal-600 transition-all transform hover:scale-105 flex items-center">
+                    <i class="fas fa-download mr-3"></i>
+                    Download My CV
+                </a>
+            </div>
+        </div>
+        <!-- Floating Elements -->
+        <div class="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full animate-pulse"></div>
+        <div class="absolute bottom-20 right-10 w-16 h-16 bg-cyan-300/20 rounded-full animate-bounce"></div>
+        <div class="absolute top-1/2 left-20 w-12 h-12 bg-white/15 rounded-full animate-ping"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="section-fade">
+                <div class="text-center mb-16">
+                    <!-- Profile Photo for About Section -->
+                    <div class="w-64 h-64 mx-auto mb-8 rounded-full bg-gray-200 border-4 border-teal-500 overflow-hidden relative group">
+                        <img src="images/profile.jpg" 
+                             alt="Ahmed Amir - About Photo" 
+                             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden w-full h-full bg-teal-500 items-center justify-center text-white font-bold text-lg">
+                            Your Photo
+                        </div>
+                    </div>
+                    <h2 class="text-5xl font-bold mb-6 text-gray-800">About Me</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Passionate Computer Science student turned Flutter specialist, combining academic excellence with real-world development experience
+                    </p>
+                </div>
+                
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <h3 class="text-3xl font-bold mb-8 text-gray-800">My Story & Unique Value</h3>
+                        <div class="space-y-6 text-lg text-gray-600 leading-relaxed">
+                            <p>
+                                <strong class="text-teal-600">Hello! I'm Ahmed,</strong> a Computer Science student at Alexandria University with an exceptional 3.75/4.0 GPA and a passion for creating beautiful, functional mobile applications.
+                            </p>
+                            <p>
+                                My journey began with <strong class="text-teal-600">competitive programming</strong>, where I've solved 250+ complex problems using C++ and Java. This foundation gave me something unique: the ability to write not just functional code, but <em>optimized, scalable, and elegant solutions</em>.
+                            </p>
+                            <p>
+                                What sets me apart is my <strong class="text-teal-600">analytical mindset combined with creative problem-solving</strong>. I don't just build apps—I architect solutions that perform flawlessly across platforms while delivering exceptional user experiences.
+                            </p>
+                            <p class="text-teal-700 font-semibold text-xl border-l-4 border-teal-500 pl-4">
+                                "I help businesses reach more customers by creating high-performance Flutter apps that work seamlessly on both iOS and Android, saving development time and costs."
+                            </p>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="text-xl font-semibold mb-4 text-gray-800">Core Expertise</h4>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="skill-tag">Flutter Development</span>
+                                <span class="skill-tag">Dart Programming</span>
+                                <span class="skill-tag">Cross-Platform Apps</span>
+                                <span class="skill-tag">UI/UX Implementation</span>
+                                <span class="skill-tag">Performance Optimization</span>
+                                <span class="skill-tag">Problem Solving</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-8">
+                        <!-- Education Card -->
+                        <div class="bg-gradient-to-r from-slate-800 to-slate-700 rounded-3xl p-8 text-white">
+                            <!-- Faculty Photo Placeholder -->
+                            <div class="w-[180px] h-[180px] mx-auto mb-6 rounded-2xl bg-gray-600 border-2 border-teal-400 overflow-hidden relative group">
+                                <img src="images/faculty.jpg" 
+                                     alt="Faculty of Computers and Data Science" 
+                                     class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="hidden w-full h-full bg-teal-500 items-center justify-center text-white font-bold text-xs text-center">
+                                    Faculty Photo
+                                </div>
+                            </div>
+                            <h4 class="text-2xl font-bold mb-6 flex items-center justify-center">
+                                <i class="fas fa-graduation-cap text-teal-400 mr-3"></i>
+                                Education Excellence
+                            </h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <h5 class="font-bold text-lg">Faculty of Computers and Data Science</h5>
+                                    <p class="text-blue-200">Alexandria University</p>
+                                    <p class="text-blue-200">Sep 2023 – Jul 2027</p>
+                                    <p class="text-teal-400 font-semibold">GPA: 3.75/4.0</p>
+                                </div>
+                                <div class="border-t border-gray-600 pt-4">
+                                    <h6 class="font-semibold mb-2">Outstanding Coursework:</h6>
+                                    <div class="grid grid-cols-2 gap-2 text-sm">
+                                        <span class="bg-green-600 px-2 py-1 rounded">Machine Learning (A)</span>
+                                        <span class="bg-blue-600 px-2 py-1 rounded">Programming II (A-)</span>
+                                        <span class="bg-purple-600 px-2 py-1 rounded">Data Structures (A)</span>
+                                        <span class="bg-indigo-600 px-2 py-1 rounded">Databases (A)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Achievement Highlight -->
+                        <div class="bg-gradient-to-r from-teal-600 to-cyan-600 rounded-3xl p-8 text-white">
+                            <h4 class="text-2xl font-bold mb-4 flex items-center">
+                                <i class="fas fa-trophy text-yellow-300 mr-3"></i>
+                                Competitive Programming
+                            </h4>
+                            <div class="text-lg">
+                                <p class="mb-2"><strong>250+ Problems Solved</strong></p>
+                                <p class="text-cyan-200">Advanced algorithms & data structures mastery</p>
+                                <p class="text-cyan-200">C++ and Java expertise</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="section-fade">
+                <div class="text-center mb-16">
+
+                    <h2 class="text-5xl font-bold mb-6 text-gray-800">Services I Offer</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Comprehensive Flutter development services to bring your mobile app ideas to life
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service 1 -->
+                    <div class="service-card rounded-3xl p-8 text-center flex flex-col">
+                        <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-mobile-alt text-3xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Custom Flutter App Development</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Build beautiful, high-performance cross-platform mobile applications from scratch. Native performance with single codebase efficiency.
+                        </p>
+                        <ul class="text-left text-gray-600 space-y-2 mb-6">
+                            <li>• iOS & Android compatibility</li>
+                            <li>• Custom UI/UX implementation</li>
+                            <li>• Performance optimization</li>
+                            <li>• Third-party integrations</li>
+                        </ul>
+                        <div class="mt-auto">
+                            <div class="text-teal-600 font-semibold text-xl">Starting from $300</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 2 -->
+                    <div class="service-card rounded-3xl p-8 text-center flex flex-col">
+                        <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-sync-alt text-3xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">App Modernization & Migration</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Transform your existing native apps into modern Flutter applications. Reduce maintenance costs while improving performance.
+                        </p>
+                        <ul class="text-left text-gray-600 space-y-2 mb-6">
+                            <li>• Legacy app assessment</li>
+                            <li>• Flutter migration strategy</li>
+                            <li>• Feature enhancement</li>
+                            <li>• Performance improvements</li>
+                        </ul>
+                        <div class="mt-auto">
+                            <div class="text-teal-600 font-semibold text-xl">Starting from $600</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 3 -->
+                    <div class="service-card rounded-3xl p-8 text-center flex flex-col">
+                        <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-code text-3xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Flutter Consulting & Code Review</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Expert guidance for your Flutter projects. Code optimization, architecture review, and best practices implementation.
+                        </p>
+                        <ul class="text-left text-gray-600 space-y-2 mb-6">
+                            <li>• Code quality assessment</li>
+                            <li>• Architecture optimization</li>
+                            <li>• Performance analysis</li>
+                            <li>• Team training & mentoring</li>
+                        </ul>
+                        <div class="mt-auto">
+                            <div class="text-teal-600 font-semibold text-xl">$25/hour</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 4 -->
+                    <div class="service-card rounded-3xl p-8 text-center flex flex-col">
+                        <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-rocket text-3xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">MVP Development</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Rapid prototyping and MVP development for startups. Get your idea to market quickly with a solid foundation for scaling.
+                        </p>
+                        <ul class="text-left text-gray-600 space-y-2 mb-6">
+                            <li>• Rapid prototyping</li>
+                            <li>• Core feature development</li>
+                            <li>• Scalable architecture</li>
+                            <li>• Market-ready deployment</li>
+                        </ul>
+                        <div class="mt-auto">
+                            <div class="text-teal-600 font-semibold text-xl">Starting from $400</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 5 -->
+                    <div class="service-card rounded-3xl p-8 text-center flex flex-col">
+                        <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-tools text-3xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">App Maintenance & Support</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Ongoing maintenance, bug fixes, and feature updates. Keep your app running smoothly with regular updates and optimizations.
+                        </p>
+                        <ul class="text-left text-gray-600 space-y-2 mb-6">
+                            <li>• Regular updates & patches</li>
+                            <li>• Bug fixes & improvements</li>
+                            <li>• Performance monitoring</li>
+                            <li>• Feature enhancements</li>
+                        </ul>
+                        <div class="mt-auto">
+                            <div class="text-teal-600 font-semibold text-xl">$150/month</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 6 -->
+                    <div class="service-card rounded-3xl p-8 text-center flex flex-col">
+                        <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-database text-3xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Backend Integration</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Seamless integration with databases, APIs, and cloud services. Complete full-stack mobile solutions with robust backend connectivity.
+                        </p>
+                        <ul class="text-left text-gray-600 space-y-2 mb-6">
+                            <li>• API development & integration</li>
+                            <li>• Database design & setup</li>
+                            <li>• Cloud service integration</li>
+                            <li>• Real-time data sync</li>
+                        </ul>
+                        <div class="mt-auto">
+                            <div class="text-teal-600 font-semibold text-xl">Starting from $300</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-16">
+                    <a href="#contact" class="cta-button text-xl">
+                        Get a Free Consultation
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 bg-gradient-to-br from-gray-50 to-teal-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="section-fade">
+                <div class="text-center mb-16">
+
+                    <h2 class="text-5xl font-bold mb-6 text-gray-800">Featured Projects</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Showcasing my best work with detailed case studies and measurable outcomes
+                    </p>
+                </div>
+                
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <!-- Project 1 -->
+                    <div class="bg-white rounded-3xl p-8 card-hover">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-r from-red-500 to-pink-500 rounded-2xl flex items-center justify-center mr-4">
+                                <i class="fas fa-heart text-2xl text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-800">Charity Connect Platform</h3>
+                                <p class="text-teal-600 font-semibold">Web Application</p>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Responsive charity website connecting donors with causes. Features secure donation processing, 
+                            real-time impact tracking, and intuitive user experience design.
+                        </p>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-semibold text-gray-800 mb-3">Key Features & Outcomes:</h4>
+                            <ul class="text-gray-600 space-y-2">
+                                <li>• <strong>Secure Payment Integration:</strong> Implemented safe donation processing</li>
+                                <li>• <strong>Impact Dashboard:</strong> Real-time donation tracking and reporting</li>
+                                <li>• <strong>Mobile-First Design:</strong> 95% mobile user satisfaction rate</li>
+                                <li>• <strong>Performance:</strong> 3-second load time across all devices</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-sm font-medium">HTML5</span>
+                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium">CSS3</span>
+                            <span class="bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-sm font-medium">JavaScript</span>
+                            <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-medium">Responsive Design</span>
+                        </div>
+                        
+                        <div class="flex space-x-4">
+                            <button class="text-teal-600 font-semibold hover:text-teal-800 transition-colors flex items-center">
+                                <i class="fas fa-external-link-alt mr-2"></i>
+                                Live Demo
+                            </button>
+                            <button class="text-gray-600 font-semibold hover:text-gray-800 transition-colors flex items-center">
+                                <i class="fab fa-github mr-2"></i>
+                                Source Code
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="bg-white rounded-3xl p-8 card-hover">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center mr-4">
+                                <i class="fas fa-credit-card text-2xl text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-800">SecureATM Simulator</h3>
+                                <p class="text-teal-600 font-semibold">Java Application</p>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Comprehensive ATM simulation system demonstrating advanced OOP principles, security protocols, 
+                            and robust transaction handling with real-world banking scenarios.
+                        </p>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-semibold text-gray-800 mb-3">Technical Achievements:</h4>
+                            <ul class="text-gray-600 space-y-2">
+                                <li>• <strong>Security Implementation:</strong> Multi-layer authentication system</li>
+                                <li>• <strong>Transaction Management:</strong> ACID-compliant operations</li>
+                                <li>• <strong>Error Handling:</strong> Comprehensive exception management</li>
+                                <li>• <strong>Code Quality:</strong> 95% test coverage with unit tests</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-medium">Java</span>
+                            <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-medium">OOP Design</span>
+                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium">Security</span>
+                            <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm font-medium">Testing</span>
+                        </div>
+                        
+                        <div class="flex space-x-4">
+                            <button class="text-teal-600 font-semibold hover:text-teal-800 transition-colors flex items-center">
+                                <i class="fas fa-play mr-2"></i>
+                                View Demo
+                            </button>
+                            <button class="text-gray-600 font-semibold hover:text-gray-800 transition-colors flex items-center">
+                                <i class="fab fa-github mr-2"></i>
+                                Source Code
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="bg-white rounded-3xl p-8 card-hover">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mr-4">
+                                <i class="fas fa-hospital text-2xl text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-800">HealthCare Management System</h3>
+                                <p class="text-teal-600 font-semibold">Full-Stack Application</p>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Complete hospital management solution with patient registration, appointment scheduling, 
+                            medical records management, and staff coordination features.
+                        </p>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-semibold text-gray-800 mb-3">System Capabilities:</h4>
+                            <ul class="text-gray-600 space-y-2">
+                                <li>• <strong>Patient Management:</strong> Complete medical history tracking</li>
+                                <li>• <strong>Appointment System:</strong> Automated scheduling and reminders</li>
+                                <li>• <strong>Database Design:</strong> Optimized for 10,000+ patient records</li>
+                                <li>• <strong>User Interface:</strong> Intuitive GUI for medical staff</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium">Database Design</span>
+                            <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-medium">GUI Development</span>
+                            <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm font-medium">SQL</span>
+                            <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-medium">System Design</span>
+                        </div>
+                        
+                        <div class="flex space-x-4">
+                            <button class="text-teal-600 font-semibold hover:text-teal-800 transition-colors flex items-center">
+                                <i class="fas fa-eye mr-2"></i>
+                                Case Study
+                            </button>
+                            <button class="text-gray-600 font-semibold hover:text-gray-800 transition-colors flex items-center">
+                                <i class="fas fa-download mr-2"></i>
+                                Documentation
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Project 4 -->
+                    <div class="bg-white rounded-3xl p-8 card-hover">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-2xl flex items-center justify-center mr-4">
+                                <i class="fas fa-brain text-2xl text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-800">AI Health Predictor</h3>
+                                <p class="text-teal-600 font-semibold">Machine Learning Project</p>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Advanced machine learning classifier for diabetes prediction using health indicators. 
+                            Demonstrates data science capabilities with real-world healthcare applications.
+                        </p>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-semibold text-gray-800 mb-3">ML Implementation:</h4>
+                            <ul class="text-gray-600 space-y-2">
+                                <li>• <strong>Model Accuracy:</strong> 87% prediction accuracy achieved</li>
+                                <li>• <strong>Data Processing:</strong> Advanced feature engineering techniques</li>
+                                <li>• <strong>Algorithm Selection:</strong> Comparative analysis of 5+ models</li>
+                                <li>• <strong>Validation:</strong> Cross-validation and performance metrics</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-sm font-medium">Python</span>
+                            <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-medium">Machine Learning</span>
+                            <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-medium">Data Science</span>
+                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium">Healthcare</span>
+                        </div>
+                        
+                        <div class="flex space-x-4">
+                            <button class="text-teal-600 font-semibold hover:text-teal-800 transition-colors flex items-center">
+                                <i class="fas fa-chart-line mr-2"></i>
+                                View Results
+                            </button>
+                            <button class="text-gray-600 font-semibold hover:text-gray-800 transition-colors flex items-center">
+                                <i class="fab fa-python mr-2"></i>
+                                Jupyter Notebook
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-16">
+                    <a href="#contact" class="cta-button text-xl">
+                        Discuss Your Project
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Achievements Section -->
+    <section id="experience" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="section-fade">
+                <div class="text-center mb-16">
+
+                    <h2 class="text-5xl font-bold mb-6 text-gray-800">Experience & Achievements</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Professional experience and notable achievements that demonstrate my expertise and commitment
+                    </p>
+                </div>
+                
+                <div class="space-y-12">
+                    <!-- Experience Timeline -->
+                    <div class="grid lg:grid-cols-2 gap-12">
+                        <!-- Professional Experience -->
+                        <div>
+                            <h3 class="text-3xl font-bold mb-8 text-gray-800 flex items-center">
+                                <i class="fas fa-briefcase text-teal-600 mr-3"></i>
+                                Professional Experience
+                            </h3>
+                            
+                            <div class="space-y-8">
+                                <!-- Flutter Intern -->
+                                <div class="bg-gradient-to-r from-teal-50 to-cyan-50 rounded-2xl p-6 border-l-4 border-teal-500">
+                                    <div class="flex items-center mb-4">
+                                        <!-- Depi Logo Placeholder -->
+                                        <div class="w-24 h-24 mr-4 rounded-xl bg-gray-200 border-2 border-teal-400 overflow-hidden flex-shrink-0">
+                                            <img src="images/DEPI.png" 
+                                                 alt="Depi Logo" 
+                                                 class="w-full h-full object-cover"
+                                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                            <div class="hidden w-full h-full bg-teal-500 items-center justify-center text-white font-bold text-xs">
+                                                DEPI
+                                            </div>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                                                <div>
+                                                    <h4 class="text-xl font-bold text-gray-800">Flutter Development Intern</h4>
+                                                    <p class="text-teal-600 font-semibold">Depi • Full-time</p>
+                                                </div>
+                                                <span class="achievement-badge mt-2 md:mt-0">June 2025 – December 2025</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="text-gray-700 space-y-2 mb-4">
+                                        <li>• <strong>Feature Development:</strong> Built 15+ new features for cross-platform mobile applications</li>
+                                        <li>• <strong>UI/UX Implementation:</strong> Translated complex designs into pixel-perfect Flutter widgets</li>
+                                        <li>• <strong>Code Quality:</strong> Maintained 95%+ code coverage through comprehensive testing</li>
+                                        <li>• <strong>Team Collaboration:</strong> Worked with 5-person development team using Agile methodologies</li>
+                                    </ul>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="bg-blue-100 text-blue-600 px-2 py-1 rounded text-sm">Flutter</span>
+                                        <span class="bg-green-100 text-green-600 px-2 py-1 rounded text-sm">Dart</span>
+                                        <span class="bg-purple-100 text-purple-600 px-2 py-1 rounded text-sm">Git</span>
+                                        <span class="bg-orange-100 text-orange-600 px-2 py-1 rounded text-sm">Agile</span>
+                                    </div>
+                                </div>
+
+                                <!-- IT Member -->
+                                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-6 border-l-4 border-blue-500">
+                                    <div class="flex items-center mb-4">
+                                        <!-- HackerRank Logo Placeholder -->
+                                        <div class="w-24 h-24 mr-4 rounded-xl bg-gray-200 border-2 border-blue-400 overflow-hidden flex-shrink-0">
+                                            <img src="images/HackerRank.jpg" 
+                                                 alt="HackerRank Logo" 
+                                                 class="w-full h-full object-cover"
+                                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                            <div class="hidden w-full h-full bg-blue-500 items-center justify-center text-white font-bold text-xs">
+                                                HR
+                                            </div>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                                                <div>
+                                                    <h4 class="text-xl font-bold text-gray-800">IT Committee Member</h4>
+                                                    <p class="text-blue-600 font-semibold">HackerRank Club, FCDS • Volunteer</p>
+                                                </div>
+                                                <span class="achievement-badge mt-2 md:mt-0">August 2024 – October 2024</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="text-gray-700 space-y-2 mb-4">
+                                        <li>• <strong>Workshop Leadership:</strong> Organized and delivered Java programming workshop for 50+ students</li>
+                                        <li>• <strong>Content Creation:</strong> Developed educational materials and hands-on coding exercises</li>
+                                        <li>• <strong>Mentoring:</strong> Provided one-on-one guidance to struggling students</li>
+                                        <li>• <strong>Community Building:</strong> Helped grow club membership by 40%</li>
+                                    </ul>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="bg-red-100 text-red-600 px-2 py-1 rounded text-sm">Java</span>
+                                        <span class="bg-yellow-100 text-yellow-600 px-2 py-1 rounded text-sm">Teaching</span>
+                                        <span class="bg-green-100 text-green-600 px-2 py-1 rounded text-sm">Leadership</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Achievements & Certifications -->
+                        <div>
+                            <h3 class="text-3xl font-bold mb-8 text-gray-800 flex items-center">
+                                <i class="fas fa-trophy text-yellow-500 mr-3"></i>
+                                Achievements & Certifications
+                            </h3>
+                            
+                            <div class="space-y-6">
+
+                                
+                                <!-- Certifications -->
+                                <div class="bg-gradient-to-r from-green-50 to-teal-50 rounded-2xl p-6 border-l-4 border-green-500">
+                                    <h4 class="text-xl font-bold text-gray-800 mb-4">Professional Certifications</h4>
+                                    <div class="space-y-4">
+                                        <div>
+                                            <h5 class="font-semibold text-green-600 cursor-pointer hover:text-green-700 transition-colors" onclick="openCertificateModal('microsoft')">Career Essentials in Software Development</h5>
+                                            <p class="text-gray-600">Microsoft and LinkedIn • December 2023</p>
+                                            <p class="text-sm text-gray-500">Comprehensive software development fundamentals and industry best practices</p>
+                                        </div>
+                                        <div>
+                                            <h5 class="font-semibold text-teal-600 cursor-pointer hover:text-teal-700 transition-colors" onclick="openCertificateModal('techx')">ECPC Qualifications Certificate</h5>
+                                            <p class="text-gray-600">ICPC - International Collegiate Programming Contest • AUG 2025</p>
+                                            <p class="text-sm text-gray-500">Problem Solving and Team Work</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-gradient-to-br from-teal-600 to-cyan-600 text-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="section-fade">
+                <div class="text-center mb-16">
+
+                    <h2 class="text-5xl font-bold mb-6">Let's Build Something Amazing Together</h2>
+                    <p class="text-xl opacity-90 max-w-3xl mx-auto">
+                        Ready to transform your mobile app idea into reality? I'm here to help you create exceptional Flutter applications that your users will love.
+                    </p>
+                </div>
+                
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <!-- Contact Info -->
+                    <div>
+                        <h3 class="text-3xl font-bold mb-8">Get In Touch</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-center">
+                                <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope text-2xl"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-lg">Email</p>
+                                    <p class="text-cyan-200">ahmed.amir.swe@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-phone text-2xl"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-lg">Phone</p>
+                                    <p class="text-cyan-200">(20) 1202155424</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-map-marker-alt text-2xl"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-lg">Location</p>
+                                    <p class="text-cyan-200">Alexandria, Egypt</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-clock text-2xl"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-lg">Response Time</p>
+                                    <p class="text-cyan-200">Within 24 hours</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-12">
+                            <h4 class="text-xl font-semibold mb-4">Follow My Journey</h4>
+                            <div class="flex space-x-4">
+                                <a href="mailto:ahmed.amir.swe@gmail.com" class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-all hover:scale-110" title="Email">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                                <a href="https://linkedin.com/in/ahmed-amir-swe" target="_blank" class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-all hover:scale-110" title="LinkedIn">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="https://github.com/ahmedamir7" target="_blank" class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-all hover:scale-110" title="GitHub">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://leetcode.com/u/ahmedamir7/" target="_blank" class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-all hover:scale-110" title="LeetCode">
+                                    <i class="fas fa-code"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- CTA Section -->
+                    <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8">
+                        <h3 class="text-2xl font-bold mb-6">Ready to Start Your Project?</h3>
+                        <p class="text-lg mb-8 opacity-90">
+                            Whether you need a new Flutter app, want to modernize an existing application, or need expert consultation, I'm here to help bring your vision to life.
+                        </p>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-green-300 mr-3"></i>
+                                <span>Free initial consultation (30 minutes)</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-green-300 mr-3"></i>
+                                <span>Detailed project proposal within 48 hours</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-green-300 mr-3"></i>
+                                <span>Transparent pricing and timeline</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-green-300 mr-3"></i>
+                                <span>Regular progress updates</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="mailto:ahmed.amir.swe@gmail.com" class="bg-white text-teal-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all text-center">
+                                Start Your Project
+                            </a>
+                            <a href="#services" class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-teal-600 transition-all text-center">
+                                View Services
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">
+                        Ahmed<span class="text-teal-400"> Amir</span>
+                    </h3>
+                    <p class="text-gray-400 mb-4">
+                        Flutter Developer specializing in high-performance cross-platform mobile applications. 
+                        Turning ideas into exceptional digital experiences.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="mailto:ahmed.amir.swe@gmail.com" class="text-gray-400 hover:text-teal-400 transition-colors">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/ahmed-amir-swe" class="text-gray-400 hover:text-teal-400 transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/ahmedamir7" class="text-gray-400 hover:text-teal-400 transition-colors">
+                            <i class="fab fa-github"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#about" class="hover:text-teal-400 transition-colors">About</a></li>
+                        <li><a href="#services" class="hover:text-teal-400 transition-colors">Services</a></li>
+                        <li><a href="#projects" class="hover:text-teal-400 transition-colors">Projects</a></li>
+                        <li><a href="#experience" class="hover:text-teal-400 transition-colors">Experience</a></li>
+                        <li><a href="#contact" class="hover:text-teal-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Flutter App Development</li>
+                        <li>App Modernization</li>
+                        <li>Flutter Consulting</li>
+                        <li>MVP Development</li>
+                        <li>App Maintenance</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-gray-400">
+                    &copy; 2024 Ahmed Amir. All rights reserved. 
+                    <span class="text-teal-400">Built with passion for Flutter development</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Certificate Modal -->
+    <div id="certificateModal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-4xl max-h-[90vh] overflow-auto relative">
+            <button onclick="closeCertificateModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl z-10 bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="certificateContent" class="p-6">
+                <!-- Certificate image will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Close mobile menu if open
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section-fade').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Enhanced typing animation effect
+        const typingElement = document.querySelector('.typing-animation');
+        const text = 'Flutter Developer & Mobile App Specialist';
+        let index = 0;
+
+        function typeText() {
+            if (index < text.length) {
+                typingElement.textContent = text.slice(0, index + 1);
+                index++;
+                setTimeout(typeText, 80);
+            }
+        }
+
+        // Start typing animation after a delay
+        setTimeout(typeText, 1500);
+
+        // Enhanced active nav link highlighting
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 300)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-teal-600');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('text-teal-600');
+                }
+            });
+        });
+
+        // Service card hover effects
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Add scroll-triggered animations for better UX
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.card-hover');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateOnScroll);
+        
+        // Initialize animations on load
+        document.addEventListener('DOMContentLoaded', () => {
+            animateOnScroll();
+        });
+
+        // Dark mode functionality
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+        const darkModeIcon = darkModeToggle.querySelector('i');
+
+        // Check for saved dark mode preference
+        const isDarkMode = localStorage.getItem('darkMode') === 'true';
+        if (isDarkMode) {
+            enableDarkMode();
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            if (body.classList.contains('dark-mode')) {
+                disableDarkMode();
+            } else {
+                enableDarkMode();
+            }
+        });
+
+        function enableDarkMode() {
+            body.classList.add('dark-mode');
+            darkModeIcon.classList.remove('fa-moon');
+            darkModeIcon.classList.add('fa-sun');
+            localStorage.setItem('darkMode', 'true');
+        }
+
+        function disableDarkMode() {
+            body.classList.remove('dark-mode');
+            darkModeIcon.classList.remove('fa-sun');
+            darkModeIcon.classList.add('fa-moon');
+            localStorage.setItem('darkMode', 'false');
+        }
+
+        // Certificate modal functions
+        function openCertificateModal(certificateType) {
+            const modal = document.getElementById('certificateModal');
+            const content = document.getElementById('certificateContent');
+            
+            // Certificate data - replace these URLs with your actual certificate images
+            const certificates = {
+                'microsoft': {
+                    title: 'Career Essentials in Software Development',
+                    issuer: 'Microsoft and LinkedIn',
+                    date: 'December 2023',
+                    image: 'images/carrer.jpeg'
+                },
+                'techx': {
+                    title: 'ECPC Qualifications Certificate',
+                    issuer: 'ICPC - International Collegiate Programming Contest',
+                    date: 'AUG 2025',
+                    image: 'images/Icpc.jpeg'
+                }
+            };
+            
+            const cert = certificates[certificateType];
+            if (cert) {
+                content.innerHTML = `
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">${cert.title}</h3>
+                        <p class="text-lg text-gray-600 mb-1">${cert.issuer}</p>
+                        <p class="text-sm text-gray-500 mb-6">${cert.date}</p>
+                        <img src="${cert.image}" alt="${cert.title}" class="w-full max-w-3xl mx-auto rounded-lg shadow-lg" 
+                             onerror="this.src='https://via.placeholder.com/800x600/14b8a6/ffffff?text=Certificate+Image+Not+Available';">
+                        <p class="text-sm text-gray-500 mt-4">Click outside or press the X to close</p>
+                    </div>
+                `;
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeCertificateModal() {
+            const modal = document.getElementById('certificateModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('certificateModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeCertificateModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeCertificateModal();
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9786007624b19aca',t:'MTc1Njc0MjY0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
